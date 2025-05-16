@@ -11,9 +11,7 @@ pipeline {
         stage('Security Scan') {
             steps {
             echo "Running Trivy filescan..."
-            sh '''
-            trivy fs --no progress -f table -o trivy-fs-report.txt .
-            '''
+            sh 'trivy fs --no progress -f table -o trivy-fs-report.txt .'
         }
             post {
                 always {
