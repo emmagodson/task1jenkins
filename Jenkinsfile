@@ -15,10 +15,10 @@ pipeline {
             trivy fs --formatjson -o trivy-fs-report.json .
             '''
         }
-        
-        post {
-            always {
-                archiveArtifacts artifacts: 'trivy-fs-report.json', fingerprint: true
+            post {
+                always {
+                    archiveArtifacts artifacts: 'trivy-fs-report.json', fingerprint: true
+                }
             }
         }
         stage('Build') {
