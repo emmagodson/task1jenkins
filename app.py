@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    hostname = getenv('HOSTNAME')
+    hostname = getenv("HOSTNAME")
     name = getenv("NAME")
     if name is None:
       name = "friend"
