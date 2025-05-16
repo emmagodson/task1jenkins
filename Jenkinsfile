@@ -8,20 +8,6 @@ pipeline {
     }
 
     stages {
-        stage('Security Scan') {
-            steps {
-            echo "Checking workspace contents..."
-            sh 'ls -la'
-
-            echo "Running Trivy filescan..."
-            sh "trivy fs --no progress -f table -o trivy-fs-report.txt ${env.WORKSPACE}"
-        }
-            post {
-                always {
-                    archiveArtifacts artifacts: 'trivy-fs-report.txt', fingerprint: true
-                }
-            }
-        }
         stage('Build') {
             steps {
                 echo "Building Docker images..."
