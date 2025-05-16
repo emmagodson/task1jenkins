@@ -8,6 +8,19 @@ pipeline {
     }
 
     stages {
+        stage('Security Scan') {
+            steps {
+            echo "Running Trivy filescan..."
+            sh '''
+            trivy fs --formatjson -o trivy-fs-report.json .
+            '''
+        }
+        
+        post {
+            always {
+                archiveArtifacts artifacts: 'trivy-fs-report.json', fingerprint: true
+            }
+        }
         stage('Build') {
             steps {
                 echo "Building Docker images..."
