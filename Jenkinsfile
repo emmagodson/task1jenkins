@@ -12,12 +12,12 @@ pipeline {
             steps {
             echo "Running Trivy filescan..."
             sh '''
-            trivy fs --formatjson -o trivy-fs-report.json .
+            trivy fs --no progress -f table -o trivy-fs-report.txt .
             '''
         }
             post {
                 always {
-                    archiveArtifacts artifacts: 'trivy-fs-report.json', fingerprint: true
+                    archiveArtifacts artifacts: 'trivy-fs-report.txt', fingerprint: true
                 }
             }
         }
