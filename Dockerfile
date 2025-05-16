@@ -11,7 +11,6 @@ ARG AUTHOR
 LABEL author=${AUTHOR}
 LABEL description="an app..."
 ENV NAME="Emma"
-HOSTNAME="nginx"
 # Expose the correct port
 EXPOSE 5500
 # Create an entrypoint
