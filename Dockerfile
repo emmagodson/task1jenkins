@@ -10,7 +10,7 @@ RUN pip install -r requirements.txt
 ARG AUTHOR
 LABEL author=${AUTHOR}
 LABEL description="an app..."
-ENV NAME='Emma'
+ENV NAME="Emma"
 # Expose the correct port
 EXPOSE 5500
 # Create an entrypoint
